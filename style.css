@@ -56,9 +56,11 @@ body,
   color: rgba(255, 255, 255, 0.637);
   position: absolute;
   top: 55%;
-  left: 40%;
+  left: 37%;
   cursor: pointer;
-
+  font-family: "Rubik Dirt", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   animation: fadeWelcome 2.5s ease-in-out forwards; 
 }
 .Welcome:hover{
@@ -78,6 +80,21 @@ body,
 }
 .oi-regular {
   font-family: "Oi", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.rubik-dirt-regular {
+  font-family: "Rubik Dirt", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.rye-regular {
+  font-family: "Rye", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.bungee-shade-regular {
+  font-family: "Bungee Shade", sans-serif;
   font-weight: 400;
   font-style: normal;
 }

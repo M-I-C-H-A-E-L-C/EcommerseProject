@@ -1,5 +1,11 @@
 html,
-body 
+body {
+    background-color: rgba(60, 60, 60);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+body,
 *{
 
     font-size: 10px; 
@@ -10,22 +16,32 @@ body
 }
 .card {
     font-size: 30px;
-    background-color: aquamarine;
-    width: 350px;
-    height: 450px;
+    background-color: rgb(255, 115, 0);
+    width: 450px;
+    height: 500px;
     text-align: center;
+    border-radius: 40px; 
 }
 .StandardText {
     font-size: 30px;
     padding: 10;
+}
+.Text1{
+    font-size: 20px;
+}
+.StandardButton {
+    font-size: 20px;
+    color:orange;
+    background-color: rgba(60, 60, 60);
+    font-family: "Rye", serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 180px;
 }
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-.StandardButton {
-    font-size: 20px;
-    color:blue;
+    padding: 20;
 }
