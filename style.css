@@ -64,7 +64,9 @@ body,
   animation: fadeWelcome 2.5s ease-in-out forwards; 
 }
 .Welcome:hover{
+  cursor: pointer;
   color:rgb(211, 211, 211)
+  
 }
 
 @keyframes fadeWelcome {

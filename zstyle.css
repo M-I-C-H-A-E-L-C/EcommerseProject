@@ -28,6 +28,7 @@ body,
 }
 .Text1{
     font-size: 20px;
+    padding: 5;
 }
 .StandardButton {
     font-size: 20px;
@@ -38,10 +39,18 @@ body,
     font-style: normal;
     width: 180px;
 }
+.StandardButton:hover{
+    cursor: pointer;
+}
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20;
+}
+.Image{
+    border-radius: 20px; 
+    width: 60%;
+    height: 60%;
 }
