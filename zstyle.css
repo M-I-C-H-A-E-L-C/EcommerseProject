@@ -47,7 +47,9 @@ body,
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20;
+    padding: 2rem;
+    margin: 2rem;
+    gap: 5rem;
 }
 .Image{
     border-radius: 20px; 

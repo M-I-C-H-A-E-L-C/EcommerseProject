@@ -46,7 +46,7 @@ function buying(amount, name ,thing){
 }
 
 function removing(amount, name, thing){
-    stuff_u_buy = stuff_u_buy.filter(item => item.name !== { name: name, price: thing.price, amount: amount });
+    stuff_u_buy = stuff_u_buy.filter(item => item.name !== name);
     cart_total -= (thing.price * amount);
 }
 buying(4, "Orihime",find_product("Orihime"));
@@ -70,6 +70,9 @@ function inject(item) {
   );
 
 }
+for (let l = 0; 1 <= product.length; l++)
+  inject(product[l])
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
   button.addEventListener("click", function (event) {
