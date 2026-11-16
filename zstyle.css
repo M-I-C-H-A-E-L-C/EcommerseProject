@@ -38,9 +38,13 @@ body,
     font-weight: 400;
     font-style: normal;
     width: 180px;
+
+    transition: transform 0.3s ease;
 }
 .StandardButton:hover{
     cursor: pointer;
+    transform: translateX(10px);
+    color:rgb(255, 120, 42);
 }
 .container {
     display: flex;
@@ -51,8 +55,14 @@ body,
     margin: 2rem;
     gap: 5rem;
 }
+
 .Image{
     border-radius: 20px; 
     width: 60%;
     height: 60%;
+
+    transition: transform 0.3s ease;
+}
+.Image:hover{
+    transform: translateX(5px);
 }

@@ -2,30 +2,25 @@
 
 
 const product = [
-    {name: "Mr Whalen", price: 67000000},
-    {name: "Tung^3", price: 67},
-    {name: "Naruto", price: 15.99},
-    {name: "Sasuke", price: 15.99},
-    {name: "Ichigo", price: 15.99},
-    {name: "Orihime", price: 15.99},
-    {name: "Itadori", price: 15.99},
-    {name: "Gojo", price: 20.99},
-    {name: "Sukuna", price: 20.99},
-    {name: "Gon", price: 15.99},
-    {name: "Killua", price: 15.99},
-    {name: "Kurapika", price: 15.99},
-    {name: "Leorio", price: 15.99},
-    {name: "Goku", price: 15.99},
-    {name: "SS1 Goku", price: 15.99},
-    {name: "SS2 Goku", price: 15.99},
-    {name: "SS3 Goku", price: 15.99},
-    {name: "SS4 Goku", price: 15.99},
-    {name: "Vegeta", price: 15.99},
-    {name: "SS1 Vegeta-ble", price: 15.99},
-    {name: "SS2 Vegeta-ble", price: 15.99},
-    {name: "Chi-Chi", price: 15.99},
-    {name: "Gohan", price: 15.99},
-    {name: "Pickle-o", price: 15.99},
+    {name: "Mr Whalen", price: 67000000, img: "images/1WhalenMichael.jpg"},
+    {name: "Tung^3", price: 67, img: "images/2TripleT.jpg"},
+    {name: "Naruto", price: 15.99, img: "images/Naruto.webp"},
+    {name: "Sasuke", price: 15.99, img: "images/Sasuke.gif"},
+    {name: "Ichigo", price: 15.99, img: "images/Ichigo.gif"},
+    {name: "Orihime", price: 15.99, img: "images/Orihime.gif"},
+    {name: "Itadori", price: 15.99, img: "images/Itadori.webp"},
+    {name: "Gojo", price: 20.99, img: "images/Gojo.webp"},
+    {name: "Sukuna", price: 20.99, img: "images/Sukuna.webp"},
+    {name: "Gon", price: 15.99, img: "images/Gon.gif"},
+    {name: "Killua", price: 15.99, img: "images/Killua.gif"},
+    {name: "Kurapika", price: 15.99, img: "images/Kurapika.webp"},
+    {name: "Leorio", price: 15.99, img: "images/Leorio.gif"},
+    {name: "Goku", price: 15.99, img: "images/Goku.gif"},
+    {name: "Vegeta-ble", price: 15.99, img: "images/Vegeta.gif"},
+    {name: "Chi-Chi", price: 15.99, img: "images/Chi-Chi.gif"},
+    {name: "Gohan", price: 15.99, img: "images/Gohan.gif"},
+    {name: "Pickle-o", price: 15.99, img: "images/Pickle-o.jpg"},
+    {name: "Cat", price: 15.99, img: "images/Cat.gif"},
 ];
 
 let stuff_u_buy = []
@@ -63,9 +58,10 @@ function inject(item) {
   container.insertAdjacentHTML(
     "beforeend",
     `<div class="card">
-        <h2 class="card-header">${item.name}</h2>
-        <img src="${item.img}" alt="" />
-        <p>filler filler filler</p>
+        <h2 class="StandardText">${item.name}</h2>
+        <img class = "Image" src="${item.img}" alt="" />
+        <p class="text1">price: ${item.price}</p>
+        <button class="StandardButton">Add to Cart</button>
       </div> `,
   );
 
