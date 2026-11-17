@@ -1,6 +1,4 @@
 
-
-
 const product = [
     {name: "Mr Whalen", price: 67000000, img: "images/1WhalenMichael.jpg"},
     {name: "Tung^3", price: 67, img: "images/2TripleT.jpg"},
@@ -23,32 +21,48 @@ const product = [
     {name: "Cat", price: 15.99, img: "images/Cat.gif"},
 ];
 
-let stuff_u_buy = []
+let stuff_u_buy = [];
 let cart_total = 0;
 
 function find_product(name){
     return product.find((item) => item.name == name);
 }
 
-function buying(amount, name ,thing){
-    let cartItem = stuff_u_buy.find(item => item.name === name);
-    //stuff_u_buy.push(`${name}: ${thing.price} ea, ${amount} units - total: ${thing.price * amount}`);
-    if (cartItem){
-        cartItem
-    }
-    stuff_u_buy.push({ name: name, price: thing.price, amount: amount });
-    cart_total += (thing.price * amount);
+function buying(amount, name){
+  const thing = find_product(name);
+  if (!thing) return;
+
+  let cartItem = stuff_u_buy.find((item) => item.name === name);
+  
+  if (cartItem) {
+    cartItem.amount += amount; // Adds to existing amount
+  } else {
+    stuff_u_buy.push({ name: thing.name, price: thing.price, amount: amount });
+  }
+
+  cart_total += thing.price * amount;
 }
 
 function removing(amount, name, thing){
-    stuff_u_buy = stuff_u_buy.filter(item => item.name !== name);
-    cart_total -= (thing.price * amount);
+  let cartItem = stuff_u_buy.find((item) => item.name === name);
+  if (!cartItem) return;
+
+    let amountToRemove = Math.min(amount, cartItem.amount);
+
+    cartItem.amount -= amountToRemove;
+    cart_total -= cartItem.price * amountToRemove;
+
+  if (cartItem.amount <= 0) {
+    stuff_u_buy = stuff_u_buy.filter((item) => item.name !== name);
+  }
 }
-buying(4, "Orihime",find_product("Orihime"));
-buying(3, "Killua", find_product("Killua"));
-removing(4, "Orihime",find_product("Orihime"));
+buying(4, "Orihime");
+buying(3, "Killua");
+removing(10, "Orihime");
+removing(10, "Killua");
+
 console.log(stuff_u_buy);
-let result = cart_total.toFixed(2);
+let result = Math.abs(cart_total).toFixed(2); 
 console.log(`Carts total price: ${result}`);
 
 
@@ -66,7 +80,7 @@ function inject(item) {
   );
 
 }
-for (let l = 0; 1 <= product.length; l++)
+for (let l = 0; l < product.length; l++)
   inject(product[l])
 
 const buttons = document.querySelectorAll("button");
@@ -75,3 +89,8 @@ buttons.forEach((button) =>
     console.log(event.target.closest(".card").getAttribute("data-item"));
   }),
 );
+
+function showCart() {
+  document.querySelector(".pop").style.display = "flex";
+}
+showCart();

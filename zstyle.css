@@ -66,3 +66,13 @@ body,
 .Image:hover{
     transform: translateX(5px);
 }
+.pop {
+  display: none;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: red;
+  transform: translate(-50%, -50%);
+}
