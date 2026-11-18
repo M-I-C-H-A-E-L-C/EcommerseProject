@@ -83,14 +83,17 @@ function inject(item) {
 for (let l = 0; l < product.length; l++)
   inject(product[l])
 
-const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
   button.addEventListener("click", function (event) {
-    console.log(event.target.closest(".card").getAttribute("data-item"));
-  }),
+    const itemName = event.target.closest(".card").getAttribute("data-item");
+    console.log("Clicked item name:", JSON.stringify(itemName)); // Reveals null or cut-off names
+    buying(1, itemName);
+    console.log("Cart: ", stuff_u_buy);
+    console.log(`Cart's total price: $${Math.abs(cart_total).toFixed(2)}`);
+  })
 );
 
-function showCart() {
+/*function showCart() {
   document.querySelector(".pop").style.display = "flex";
 }
-showCart();
+showCart();*/
