@@ -71,10 +71,11 @@ function inject(item) {
   const container = document.querySelector(".container");
   container.insertAdjacentHTML(
     "beforeend",
-    `<div class="card">
+    `<div class="card" data-item="${item.name}">
         <h2 class="StandardText">${item.name}</h2>
         <img class = "Image" src="${item.img}" alt="" />
         <p class="text1">price: ${item.price}</p>
+        <p class="text1 amount-display">amount: ${item.amount || 0}</p>
         <button class="StandardButton">Add to Cart</button>
       </div> `,
   );
@@ -83,17 +84,34 @@ function inject(item) {
 for (let l = 0; l < product.length; l++)
   inject(product[l])
 
+const buttons = document.querySelectorAll(".StandardButton");
 buttons.forEach((button) =>
   button.addEventListener("click", function (event) {
+    const card = event.target.closest(".card");
     const itemName = event.target.closest(".card").getAttribute("data-item");
-    console.log("Clicked item name:", JSON.stringify(itemName)); // Reveals null or cut-off names
+
+    console.log("Clicked item name:", JSON.stringify(itemName));
     buying(1, itemName);
+
+    const cartItem = stuff_u_buy.find((item) => item.name === itemName);
+    const currentAmount = cartItem ? cartItem.amount : 0;
+    card.querySelector(".amount-display").textContent = `amount: ${currentAmount}`;
+
     console.log("Cart: ", stuff_u_buy);
     console.log(`Cart's total price: $${Math.abs(cart_total).toFixed(2)}`);
+
+
   })
 );
 
-/*function showCart() {
+/*document.querySelector("form").addEventListener("submit",function
+(event) {
+  event.preventDefault();
+  let cpn = document.querySelector("#coupon").value;
+  console.log(cpn)
+});*/
+
+/*function showCard() {
   document.querySelector(".pop").style.display = "flex";
 }
-showCart();*/
+showCard();*/
