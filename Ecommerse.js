@@ -111,7 +111,22 @@ buttons.forEach((button) =>
   console.log(cpn)
 });*/
 
-/*function showCard() {
-  document.querySelector(".pop").style.display = "flex";
+let isCartVisible = false;
+
+function showCard() {
+  document.querySelector(".cart").style.visibility= "visible";
 }
-showCard();*/
+function hideCard() {
+  document.querySelector(".cart").style.visibility= "hidden";
+}
+//showCard();
+
+document.getElementById("1").addEventListener("click", function(event){
+  if (isCartVisible) {
+    hideCard();
+    isCartVisible = false;
+  } else {
+    showCard();
+    isCartVisible = true;
+  }
+});
