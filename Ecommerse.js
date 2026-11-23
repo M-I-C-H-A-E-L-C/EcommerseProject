@@ -65,7 +65,25 @@ console.log(stuff_u_buy);
 let result = Math.abs(cart_total).toFixed(2); 
 console.log(`Carts total price: ${result}`);
 
+function renderCart() {
+  const cartList = document.getElementById("cart-items");
+  cartList.innerHTML = "";
 
+  stuff_u_buy.forEach((item) => {
+  const itemTotal = (item.price * item.amount).toFixed(2);
+  cartList.insertAdjacentHTML(
+    "beforeend",
+    `<li>
+      ${item.name} — $${item.price} x ${item.amount} = $${itemTotal}
+    </li>`
+  );
+});
+    cartList.insertAdjacentHTML(
+    "beforeend",
+    `<li><strong>Total: $${Math.abs(cart_total).toFixed(2)}</strong></li>`
+  );
+
+}
 
 function inject(item) {
   const container = document.querySelector(".container");
@@ -121,11 +139,15 @@ function hideCard() {
 }
 //showCard();
 
-document.getElementById("1").addEventListener("click", function(event){
+
+
+
+document.getElementById("Render-Cart").addEventListener("click", function(event){
   if (isCartVisible) {
     hideCard();
     isCartVisible = false;
   } else {
+    renderCart();
     showCard();
     isCartVisible = true;
   }
