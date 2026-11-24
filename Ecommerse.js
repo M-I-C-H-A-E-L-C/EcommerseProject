@@ -56,10 +56,6 @@ function removing(amount, name, thing){
     stuff_u_buy = stuff_u_buy.filter((item) => item.name !== name);
   }
 }
-buying(4, "Orihime");
-buying(3, "Killua");
-removing(10, "Orihime");
-removing(10, "Killua");
 
 console.log(stuff_u_buy);
 let result = Math.abs(cart_total).toFixed(2); 
