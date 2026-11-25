@@ -58,6 +58,17 @@ body,
     transform: translateX(10px);
     color:rgb(255, 120, 42);
 }
+.StandardButton {
+    font-size: 20px;
+    color:rgb(223, 219, 212);
+    background-color: rgb(167, 76, 40);
+    font-family: "Rye", serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 180px;
+
+    transition: transform 0.3s ease;
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -91,5 +102,13 @@ body,
   border-radius: 40px; 
 }
 .items-in-cart{
-    font-size: 100px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+.Cart_Total{
+    margin-top: 30px;
+    font-size: 40px;
+}
+.cart-button{
+    font-size: 20px;
 }

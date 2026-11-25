@@ -43,6 +43,44 @@ function buying(amount, name){
   cart_total += thing.price * amount;
 }
 
+/*function removing(amount, name, thing){
+  let cartItem = stuff_u_buy.find((item) => item.name === name);
+  if (!cartItem) return;
+
+    let amountToRemove = Math.min(amount, cartItem.amount);
+
+    cartItem.amount -= amountToRemove;
+    cart_total -= cartItem.price * amountToRemove;
+
+  if (cartItem.amount <= 0) {
+    stuff_u_buy = stuff_u_buy.filter((item) => item.name !== name);
+  }
+}*/
+
+console.log(stuff_u_buy);
+let result = Math.abs(cart_total).toFixed(2); 
+console.log(`Carts total price: ${result}`);
+
+function renderCart() {
+  const cartList = document.getElementById("cart-items");
+  cartList.innerHTML = "";
+
+  stuff_u_buy.forEach((item) => {
+  const itemTotal = (item.price * item.amount).toFixed(2);
+  cartList.insertAdjacentHTML(
+    "beforeend",
+    `<li class="items-in-cart">
+      ${item.name} — $${item.price} x ${item.amount} = $${itemTotal}
+    </li>`
+  );
+});
+    cartList.insertAdjacentHTML(
+    "beforeend",
+    `<li class="Cart_Total">Total: $${Math.abs(cart_total).toFixed(2)}</li>`
+  );
+
+}
+
 function removing(amount, name, thing){
   let cartItem = stuff_u_buy.find((item) => item.name === name);
   if (!cartItem) return;
@@ -57,29 +95,6 @@ function removing(amount, name, thing){
   }
 }
 
-console.log(stuff_u_buy);
-let result = Math.abs(cart_total).toFixed(2); 
-console.log(`Carts total price: ${result}`);
-
-function renderCart() {
-  const cartList = document.getElementById("cart-items");
-  cartList.innerHTML = "";
-
-  stuff_u_buy.forEach((item) => {
-  const itemTotal = (item.price * item.amount).toFixed(2);
-  cartList.insertAdjacentHTML(
-    "beforeend",
-    `<li>
-      ${item.name} — $${item.price} x ${item.amount} = $${itemTotal}
-    </li>`
-  );
-});
-    cartList.insertAdjacentHTML(
-    "beforeend",
-    `<li><strong>Total: $${Math.abs(cart_total).toFixed(2)}</strong></li>`
-  );
-
-}
 
 function inject(item) {
   const container = document.querySelector(".container");
@@ -91,6 +106,7 @@ function inject(item) {
         <p class="text1">price: ${item.price}</p>
         <p class="text1 amount-display">amount: ${item.amount || 0}</p>
         <button class="StandardButton">Add to Cart</button>
+        <button class="RemoveButton">Remove from Cart</button>
       </div> `,
   );
 
@@ -117,6 +133,29 @@ buttons.forEach((button) =>
 
   })
 );
+
+const removeButtons = document.querySelectorAll(".RemoveButton");
+
+removeButtons.forEach((button) =>
+  button.addEventListener("click", function (event) {
+    const card = event.target.closest(".card");
+    const itemName = card.getAttribute("data-item");
+
+    removing(1, itemName);
+
+    const cartItem = stuff_u_buy.find((item) => item.name === itemName);
+    const currentAmount = cartItem ? cartItem.amount : 0;
+    card.querySelector(".amount-display").textContent = `amount: ${currentAmount}`;
+
+    if (isCartVisible) {
+      renderCart();
+    }
+
+    console.log("Cart: ", stuff_u_buy);
+    console.log(`Cart's total price: $${Math.abs(cart_total).toFixed(2)}`);
+  })
+);
+
 
 /*document.querySelector("form").addEventListener("submit",function
 (event) {
